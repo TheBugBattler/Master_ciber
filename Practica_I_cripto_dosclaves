@@ -1,0 +1,53 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Sep 23 11:51:49 2024
+
+@author: kali
+"""
+
+
+alfabeto = ("A","B","C","D","E","F","G","H","I","J","K","L","M","N","Ñ","O","P","Q","R","S","T","U","V","W","X","Y","Z")
+
+clave1=("Ñ", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N")
+
+clave2=("Z", "Y", "X", "W", "V", "U", "T", "S", "R", "Q", "P", "O", "Ñ", "N", "M", "L", "K", "J", "I", "H", "G", "F", "E", "D", "C", "B", "A")
+
+mensaje=input("Intrdocuzca el mensaje: ").upper()
+
+cifraodes=input("Introduzca si quiere cifrar o descifrar: ").upper()
+
+if cifraodes=="DESCIFRAR":
+    resultado=""
+    diccionario_descifrar1=dict(zip(clave1, alfabeto))
+    diccionario_descifrar2=dict(zip(clave2, alfabeto))
+
+    for i, letra in enumerate(mensaje,start=0):
+        if letra in diccionario_descifrar1 and i % 2==0:
+            resultado += diccionario_descifrar1[letra]
+        
+        elif letra in diccionario_descifrar2 and  i%2==1:
+            resultado += diccionario_descifrar2[letra]
+
+        else:
+            resultado +=letra #En caso de no encontrarse en los diccionarios nos quedamos con la letra o caracter tal cual
+
+if cifraodes=="CIFRAR":
+    resultado=""
+    diccionario_descifrar1=dict(zip(alfabeto, clave1))
+    diccionario_descifrar2=dict(zip(alfabeto, clave2))
+
+    for i, letra in enumerate(mensaje,start=0):
+        if letra in diccionario_descifrar1 and i % 2==0:
+            resultado += diccionario_descifrar1[letra]
+        
+        elif letra in diccionario_descifrar2 and  i%2==1:
+            resultado += diccionario_descifrar2[letra]
+
+        else:
+            resultado +=letra #En caso de no encontrarse en los diccionarios nos quedamos con la letra o caracter tal cual
+
+
+
+    
+print(resultado)
