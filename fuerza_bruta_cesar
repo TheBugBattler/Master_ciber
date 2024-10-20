@@ -1,0 +1,27 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Sep 24 10:53:07 2024
+
+@author: kali
+"""
+import numpy as np
+
+alfabeto=['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+posicion=np.arange(0,26)
+
+posibilidades=np.arange(0,26)
+diccionario=dict(zip(alfabeto,posicion))
+mensaje=input("Introduce el mensaje cifrado: ").upper()
+                
+for j in range(0,26):
+    resultado=""
+    
+    for letra in mensaje:
+        if letra in mensaje:
+            nueva_posicion=(diccionario[letra]-j)%26
+            nueva_letra=alfabeto[nueva_posicion]
+            resultado += nueva_letra
+        else:
+            resultado +=letra
+    print(resultado)
